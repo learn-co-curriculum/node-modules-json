@@ -78,10 +78,21 @@ var config = require('./config.js')
 
 Note: In JSON file you **must use double quotes** around not only string values, but also all keys/properties. Also, the file must have only one root element (the main parent element): an array or an object.
 
+## Omitting Extension
+
+So you can require both JSON and JS files. It's possible to omit a file extension. In this case `.js` files take priority over `.json` files. For example, there are two files `customers.json` and `customers.js` with the same names but different extensions. If we have this code (`req-no-ext.js`), node will take the data from `customer.js`
+
+```js
+var data = require('./customers')
+console.log(data.length, data[2].email)
+```
+
+If there's only `.json` file, then Node will use JSON.
+
 ## Resources
 
-1. []()
-1. []()
+1. [You Can Use require() To Load JSON (JavaScript Object Notation) Files In Node.js video](http://www.bennadel.com/blog/2908-you-can-use-require-to-load-json-javascript-object-notation-files-in-node-js.htm)
+1. [JSON generator: random JSON data generator](http://www.json-generator.com/)
 1. []()
 
 
