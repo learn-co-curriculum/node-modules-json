@@ -19,7 +19,7 @@ JSON stands for JavaScript Object Notation. It's a widely use data format. When 
 * Plugins for frameworks
 
 
-Let's implement code which reads a JSON file and parses the file data into JavaScript object:
+Let's implement code which reads a JSON file and parses the file data into JavaScript object (`read.js`):
 
 ```js
 var fs = require('fs')
@@ -35,14 +35,17 @@ fs.readFile('./customers.json', {encoding: 'utf8'}, function(error, jsonString){
 
 The fact that we can access property `data[2].email` tells us that `data` is a JavaScript/Node object and not a JSON string.
 
-All the code above can be replaced with one line where we use `require()`:
+All the code above can be replaced with one line where we use `require()`—`req.js`:
 
 ```js
 var data = require('./customers.json')
 console.log(data.length, data[2].email)
 ```
 
+To run the example, use `$ node read` and `$ node req`.
+
 So `require()` not only imports JavaScript and executes files, but also reads and parses JSON files.
+
 
 ## Static Configuration
 
@@ -89,11 +92,12 @@ console.log(data.length, data[2].email)
 
 If there's only `.json` file, then Node will use JSON.
 
+Note: to run this example, execute `$ node req-no-ext.js` and compare the results with `$ node req.js`.
+
 ## Resources
 
 1. [You Can Use require() To Load JSON (JavaScript Object Notation) Files In Node.js video](http://www.bennadel.com/blog/2908-you-can-use-require-to-load-json-javascript-object-notation-files-in-node-js.htm)
 1. [JSON generator: random JSON data generator](http://www.json-generator.com/)
-1. []()
 
 
 ---
