@@ -19,6 +19,65 @@ JSON stands for JavaScript Object Notation. It's a widely use data format. When 
 * Plugins for frameworks
 
 
+Let's implement code which reads a JSON file and parses the file data into JavaScript object:
+
+```js
+var fs = require('fs')
+fs.readFile('./customers.json', {encoding: 'utf8'}, function(error, jsonString){
+  try {
+    var data = JSON.parse(jsonString)
+  } catch(e) {
+    console.log(e)
+  }
+  console.log(data.length, data[2].email)
+})
+```
+
+The fact that we can access property `data[2].email` tells us that `data` is a JavaScript/Node object and not a JSON string.
+
+All the code above can be replaced with one line where we use `require()`:
+
+```js
+var data = require('./customers.json')
+console.log(data.length, data[2].email)
+```
+
+So `require()` not only imports JavaScript and executes files, but also reads and parses JSON files.
+
+## Static Configuration
+
+Sometime you need to have some static configuration. You can use the module for it, e.g.,
+
+```js
+module.exports = {
+    url: 'http://webapplog.com',
+    name: 'React Quicly',
+    port: 3000,
+    apiKey: '34EC5CE9-CD02-4C4E-B5D9-D7CEF2F12F2C'
+}
+```
+
+And then in the main file: `var config = require('./config.js')`. 
+
+An alternative and maybe better way would be to use a JSON file:
+
+```js
+{
+    "url": "http://webapplog.com",
+    "name": "React Quicly",
+    "port": 3000,
+    "apiKey": "34EC5CE9-CD02-4C4E-B5D9-D7CEF2F12F2C"
+}
+```
+
+And the same `require()` in the main file (file which imports the configurations):
+
+```
+var config = require('./config.js')
+```
+
+Note: In JSON file you **must use double quotes** around not only string values, but also all keys/properties. Also, the file must have only one root element (the main parent element): an array or an object.
+
 ## Resources
 
 1. []()
