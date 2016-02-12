@@ -83,7 +83,7 @@ Note: In JSON file you **must use double quotes** around not only string values,
 
 ## Omitting Extension
 
-So you can require both JSON and JS files. It's possible to omit a file extension. In this case `.js` files take priority over `.json` files. For example, there are two files `customers.json` and `customers.js` with the same names but different extensions. If we have this code (`req-no-ext.js`), node will take the data from `customer.js`
+So you can require both JSON and JS files. It's possible to omit a file extension. If you do that, `.js` files take priority over `.json` files. For example, there are two files `customers.json` and `customers.js` with the same names but different extensions. If we have this code (`req-no-ext.js`), node will take the data from `customer.js`
 
 ```js
 var data = require('./customers')
