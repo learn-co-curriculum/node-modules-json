@@ -2,24 +2,14 @@
 
 ## Overview
 
-This lesson will cover how and why you would import JSON files.
-
-## Objectives
-
-1. Describe how to import JSON files using provided example: configurations, data, settings
-1. Describe why you'd need to have JSON files
-
-## Reading JSON Files
-
-JSON stands for JavaScript Object Notation. It's a widely use data format. When it comes to Node applications, developers like to use JSON file to store various data such as:
+JSON (JavaScript Object Notation) is a widely use data format. When it comes to Node applications, developers like to use JSON file to store various data such as:
 
 * Configurations
 * Seed data (initial data to populate the development or test database)
 * Settings
 * Plugins for frameworks
 
-
-Let's implement code which reads a JSON file and parses the file data into JavaScript object (`read.js`):
+Let's implement code which reads a JSON file and parses the file data into JavaScript object (`read.js`). The `customers.json` has information about customers including their emails, balance, phone numbers and addresses. Please don't share this information with anyone. 
 
 ```js
 var fs = require('fs')
@@ -33,9 +23,20 @@ fs.readFile('./customers.json', {encoding: 'utf8'}, function(error, jsonString){
 })
 ```
 
-The fact that we can access property `data[2].email` tells us that `data` is a JavaScript/Node object and not a JSON string.
+The fact that we can access property `data[2].email` tells us that `data` is a JavaScript/Node object and not a JSON string. The file has an array that's why we can get its length and access the third item (array is 0-based). The items have property `email` among others.
 
-All the code above can be replaced with one line where we use `require()`—`req.js`:
+Okay, we know the code works, but can we do better? Do we have to `try` and `parse` for every JSON file. It's JavaScript after all. 
+
+This lesson will cover how you can import JSON files effortlessly.
+
+## Objectives
+
+1. Import JSON files using provided example: configurations, data, settings
+1. Describe why you'd need to have JSON files
+
+## Importing JSON Files
+
+When we need to access a JSON file, all the code above can be replaced with one line where we use `require()` (the `req.js` file for you to follow along with the real code):
 
 ```js
 var data = require('./customers.json')
@@ -49,7 +50,7 @@ So `require()` not only imports JavaScript and executes files, but also reads an
 
 ## Static Configuration
 
-Sometime you need to have some static configuration. You can use the module for it, e.g.,
+Sometime you need to have some static configuration, e.g., port numbers, URLs, names, keys which never change. One approach would be to use the Node module for it, e.g.,
 
 ```js
 module.exports = {
@@ -60,9 +61,9 @@ module.exports = {
 }
 ```
 
-And then in the main file: `var config = require('./config.js')`. 
+That's the `config.js` file. And then, in the main file you can implement `var config = require('./config.js')` to use the static configurations.
 
-An alternative and maybe better way would be to use a JSON file:
+An alternative and maybe a better way would be to use a JSON file:
 
 ```js
 {
