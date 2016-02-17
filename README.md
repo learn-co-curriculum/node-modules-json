@@ -63,7 +63,7 @@ module.exports = {
 
 That's the `config.js` file. And then, in the main file you can implement `var config = require('./config.js')` to use the static configurations.
 
-An alternative and maybe a better way would be to use a JSON file:
+An alternative and maybe a better way would be to format it as JSON:
 
 ```js
 {
@@ -80,11 +80,11 @@ And the same `require()` in the main file (file which imports the configurations
 var config = require('./config.js')
 ```
 
-Note: In JSON file you **must use double quotes** around not only string values, but also all keys/properties. Also, the file must have only one root element (the main parent element): an array or an object.
+Note: In a JSON file you **must use double quotes** around not only string values, but also all keys/properties. Also, the file must have only one root element (the main parent element): an array or an object.
 
 ## Omitting Extension
 
-So you can require both JSON and JS files. It's possible to omit a file extension. If you do that, `.js` files take priority over `.json` files. For example, there are two files `customers.json` and `customers.js` with the same names but different extensions. If we have this code (`req-no-ext.js`), node will take the data from `customer.js`
+So you can require both JSON and JS files. It is also possible to omit a file extension. If you do that, `.js` files take priority over `.json` files. For example, there are two files `customers.json` and `customers.js` with the same names but different extensions. If we have this code (`req-no-ext.js`), node will take the data from `customer.js`
 
 ```js
 var data = require('./customers')
@@ -93,7 +93,7 @@ console.log(data.length, data[2].email)
 
 If there's only `.json` file, then Node will use JSON.
 
-Note: to run this example, execute `$ node req-no-ext.js` and compare the results with `$ node req.js`.
+Note: to run this example, execute `node req-no-ext.js` and compare the results with `node req.js`.
 
 ## Resources
 
