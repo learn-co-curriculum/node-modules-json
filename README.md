@@ -2,7 +2,7 @@
 
 ## Overview
 
-JSON (JavaScript Object Notation) is a widely use data format. When it comes to Node applications, developers like to use JSON file to store various data such as:
+JSON is a widely use data format. When it comes to Node applications, developers like to use JSON file to store various data such as:
 
 * Configurations
 * Seed data (initial data to populate the development or test database)
@@ -23,7 +23,7 @@ fs.readFile('./customers.json', {encoding: 'utf8'}, function(error, jsonString){
 })
 ```
 
-The fact that we can access property `data[2].email` tells us that `data` is a JavaScript/Node object and not a JSON string. The file has an array that's why we can get its length and access the third item (array is 0-based). The items have property `email` among others.
+The fact that we can access property `data[2].email` tells us that `data` is a JavaScript/Node object and not a JSON string. The file has an array that's why we can get its length and access the third item. The items have property `email` among others.
 
 Okay, we know the code works, but can we do better? Do we have to `try` and `parse` for every JSON file. It's JavaScript after all. 
 
@@ -43,14 +43,14 @@ var data = require('./customers.json')
 console.log(data.length, data[2].email)
 ```
 
-To run the example, use `$ node read` and `$ node req`.
+To run the example, use `node read` and `node req`.
 
 So `require()` not only imports JavaScript and executes files, but also reads and parses JSON files.
 
 
 ## Static Configuration
 
-Sometime you need to have some static configuration, e.g., port numbers, URLs, names, keys which never change. One approach would be to use the Node module for it, e.g.,
+Sometimes you need to have some static configurations like, port numbers, URLs, names, keys which never change. One approach would be to use the Node module for it:
 
 ```js
 module.exports = {
