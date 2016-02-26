@@ -1,0 +1,3 @@
+// read-config.js
+var config = require('./config.js')
+console.log(config)
